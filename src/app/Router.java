@@ -2,6 +2,7 @@ package app;
 
 import Controllers.Controller;
 import Controllers.FacultyController;
+import Controllers.StudentController;
 
 public class Router
 {
@@ -17,6 +18,9 @@ public class Router
         switch (name) {
             case "faculty" -> {
                 return new FacultyController(this.app);
+            }
+            case "student" -> {
+                return new StudentController(this.app);
             }
         }
         return null;

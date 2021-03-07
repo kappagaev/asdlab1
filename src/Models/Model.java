@@ -1,6 +1,6 @@
 package Models;
 
-public class Model
+public abstract class Model
 {
 
 }

@@ -11,7 +11,7 @@ public class FacultyController extends Controller
 
     @Override
     public void view() {
-        System.out.println("Hello, World!");
+
     }
 
     @Override
