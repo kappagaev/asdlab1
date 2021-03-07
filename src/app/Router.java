@@ -19,5 +19,6 @@ public class Router
                 return new FacultyController(this.app);
             }
         }
+        return null;
     }
 }

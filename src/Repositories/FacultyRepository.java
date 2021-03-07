@@ -20,7 +20,7 @@ public class FacultyRepository extends Repository
 
     public void update(int id, Faculty model)
     {
-
+        models[]
     }
 
     public void delete(int id)
