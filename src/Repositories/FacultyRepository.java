@@ -7,25 +7,30 @@ import java.util.LinkedList;
 
 public class FacultyRepository extends Repository
 {
-    private LinkedList<Faculty> faculties;
+    private LinkedList<Faculty> faculties = new LinkedList<Faculty>();
 
     public void store(Faculty model)
     {
         this.faculties.add(model);
     }
 
-    public Model get(int id)
+    public Faculty get(String name)
     {
-        return [id + 1];
+        for (Faculty faculty: faculties) {
+            if (faculty.name.equals(name)) {
+                return faculty;
+            }
+        }
+        return null;
     }
 
-    public void update(int id, Faculty model)
+    public boolean delete(Faculty model)
     {
-        models[]
+        return faculties.remove(model);
     }
 
-    public void delete(int id)
+    public LinkedList<Faculty> all()
     {
-
+        return this.faculties;
     }
 }

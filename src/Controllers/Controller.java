@@ -17,6 +17,7 @@ abstract public class Controller
             case "create" -> this.create();
             case "update" -> this.update();
             case "delete" -> this.delete();
+            case "index" -> this.index();
         }
     }
 
@@ -24,4 +25,5 @@ abstract public class Controller
     public abstract void create();
     public abstract void update();
     public abstract void delete();
+    public abstract void index();
 }

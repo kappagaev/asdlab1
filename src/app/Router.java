@@ -2,6 +2,7 @@ package app;
 
 import Controllers.Controller;
 import Controllers.FacultyController;
+import Controllers.StudentController;
 
 public class Router
 {
@@ -18,7 +19,15 @@ public class Router
             case "faculty" -> {
                 return new FacultyController(this.app);
             }
+            case "student" -> {
+                return new StudentController(this.app);
+            }
         }
         return null;
+    }
+
+    public String routes()
+    {
+        return "faculty/student";
     }
 }

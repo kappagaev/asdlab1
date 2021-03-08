@@ -14,23 +14,11 @@ public final class DataInput {
             try {
                 ans = Double.valueOf(getString(text));
                 break;
-            } catch (IOException e) {
-                e.printStackTrace();
             } catch (NumberFormatException e) {
                 System.out.println("Incorrect Format");
             }
         }
         return ans;
-    }
-
-    public static Long getLong() throws IOException {
-        return getLong(null);
-    }
-
-    public static Long getLong(String text) throws IOException {
-        String s = getString(text);
-        Long value = Long.valueOf(s);
-        return value;
     }
 
     public static Character getChar() throws IOException, IndexOutOfBoundsException {
@@ -52,14 +40,9 @@ public final class DataInput {
         while (true) {
             try {
                 String s = "";
-                try {
-                    s = getString(text);
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                Integer value = Integer.valueOf(s);
-                return value;
+                s = getString(text);
+
+                return Integer.valueOf(s);
             } catch (NumberFormatException e) {
                 System.out.println("Incorrect format");
             }
@@ -71,12 +54,20 @@ public final class DataInput {
         return getString(null);
     }
 
-    public static String getString(String text) throws IOException {
+    public static String getString(String text)  {
         if (text != null)
             System.out.print(text);
         InputStreamReader isr = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(isr);
-        String s = br.readLine();
+        String s = null;
+        while (s == null) {
+            try {
+                s = br.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+                s = null;
+            }
+        }
         return s;
     }
 }
