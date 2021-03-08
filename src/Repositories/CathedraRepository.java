@@ -8,12 +8,7 @@ import java.util.LinkedList;
 
 public class CathedraRepository extends Repository {
 
-  private LinkedList<Cathedra> cathedras = new LinkedList<>();
-
-//  public void store(Cathedra model)
-//  {
-//    this.cathedras.add(model);
-//  }
+  LinkedList<Cathedra> cathedras = new LinkedList<>();
 
   @Override
   public void store(Model model) {

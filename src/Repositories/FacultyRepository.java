@@ -7,7 +7,7 @@ import java.util.LinkedList;
 
 public class FacultyRepository extends Repository
 {
-    private LinkedList<Faculty> faculties = new LinkedList<>();
+    LinkedList<Faculty> faculties = new LinkedList<>();
 
 //    public void store(Faculty model)
 //    {
@@ -31,7 +31,7 @@ public class FacultyRepository extends Repository
 
     @Override
     public boolean delete(Model model) {
-        return faculties.remove((Faculty) model);
+        return faculties.remove(model);
     }
 
 //    public boolean delete(Faculty model)
