@@ -3,19 +3,20 @@ package Repositories;
 import Models.Faculty;
 import Models.Model;
 
+import java.util.LinkedList;
+
 public class FacultyRepository extends Repository
 {
-    private Faculty[] models;
-    private int lastIndex = 0;
+    private LinkedList<Faculty> faculties;
 
     public void store(Faculty model)
     {
-        this.models[lastIndex++] = model;
+        this.faculties.add(model);
     }
 
     public Model get(int id)
     {
-        return this.models[id + 1];
+        return [id + 1];
     }
 
     public void update(int id, Faculty model)
