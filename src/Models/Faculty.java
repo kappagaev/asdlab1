@@ -2,7 +2,10 @@ package Models;
 
 public class Faculty extends Model
 {
-  public String name;
+
+  public Faculty(String name) {
+    super(name);
+  }
 
   @Override
   public String toString()

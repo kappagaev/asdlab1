@@ -1,7 +1,6 @@
 package app;
 
-import Repositories.FacultyRepository;
-import Repositories.Repository;
+import Repositories.*;
 
 import java.util.LinkedList;
 

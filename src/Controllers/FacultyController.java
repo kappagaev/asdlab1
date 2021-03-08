@@ -1,8 +1,8 @@
 package Controllers;
 
-import Factories.FacultyFactory;
-import Models.Faculty;
-import app.App;
+import Factories.*;
+import Models.*;
+import app.*;
 import app.DataInput;
 
 public class FacultyController extends Controller

@@ -7,15 +7,20 @@ import java.util.LinkedList;
 
 public class FacultyRepository extends Repository
 {
-    private LinkedList<Faculty> faculties = new LinkedList<Faculty>();
+    private LinkedList<Faculty> faculties = new LinkedList<>();
 
-    public void store(Faculty model)
-    {
-        this.faculties.add(model);
+//    public void store(Faculty model)
+//    {
+//        this.faculties.add(model);
+//    }
+
+    @Override
+    public void store(Model model) {
+        this.faculties.add((Faculty) model);
     }
 
-    public Faculty get(String name)
-    {
+    @Override
+    public Faculty get(String name) {
         for (Faculty faculty: faculties) {
             if (faculty.name.equals(name)) {
                 return faculty;
@@ -24,13 +29,19 @@ public class FacultyRepository extends Repository
         return null;
     }
 
-    public boolean delete(Faculty model)
-    {
-        return faculties.remove(model);
+    @Override
+    public boolean delete(Model model) {
+        return faculties.remove((Faculty) model);
     }
 
-    public LinkedList<Faculty> all()
+//    public boolean delete(Faculty model)
+//    {
+//        return faculties.remove(model);
+//    }
+
+    @Override
+    public Faculty[] all()
     {
-        return this.faculties;
+        return this.faculties.toArray(new Faculty[0]);
     }
 }

@@ -1,8 +1,6 @@
 package app;
 
-import Controllers.Controller;
-import Controllers.FacultyController;
-import Controllers.StudentController;
+import Controllers.*;
 
 public class Router
 {

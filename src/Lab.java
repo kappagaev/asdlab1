@@ -1,6 +1,5 @@
-import Controllers.Controller;
-import app.App;
-import app.DataInput;
+import Controllers.*;
+import app.*;
 
 import java.io.IOException;
 

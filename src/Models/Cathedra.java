@@ -1,4 +1,8 @@
 package Models;
 
-public class Cathedra {
+public class Cathedra extends Model{
+
+  public Cathedra(String name) {
+    super(name);
+  }
 }

@@ -1,6 +1,6 @@
 package app;
 
-import Repositories.FacultyRepository;
+import Repositories.*;
 
 public class RepositoryCollection
 {

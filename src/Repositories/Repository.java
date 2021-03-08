@@ -1,13 +1,15 @@
 package Repositories;
 
-import Models.Faculty;
-import Models.Model;
+import Models.*;
 
 public abstract class Repository
 {
 
-//  public abstract void store(Faculty model);
-//  public abstract Model get(String name);
-//  public abstract void update(int id, Faculty model);
-//  public abstract void delete(int id);
+  public abstract void store(Model model);
+
+  public abstract Model get(String name);
+
+  public abstract boolean delete(Model model);
+
+  public abstract Model[] all();
 }

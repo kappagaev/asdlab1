@@ -1,31 +1,44 @@
 package Repositories;
 
+import Models.Cathedra;
 import Models.Faculty;
 import Models.Model;
 
 import java.util.LinkedList;
 
-public class CathedraRepository {
+public class CathedraRepository extends Repository {
 
-  private LinkedList<Faculty> faculties;
+  private LinkedList<Cathedra> cathedras = new LinkedList<>();
 
-  public void store(Faculty model)
-  {
-    this.faculties.add(model);
+//  public void store(Cathedra model)
+//  {
+//    this.cathedras.add(model);
+//  }
+
+  @Override
+  public void store(Model model) {
+    this.cathedras.add((Cathedra) model);
   }
 
+  @Override
   public Model get(String name)
   {
+    for (var cathedra : cathedras) {
+      if (cathedra.name.equals(name)) {
+        return cathedra;
+      }
+    }
     return null;
   }
 
-  public void update(int id, Faculty model)
-  {
-
+  @Override
+  public boolean delete(Model model) {
+    return cathedras.remove(model);
   }
 
-  public void delete(String name)
-  {
-
+  @Override
+  public Model[] all() {
+    return this.cathedras.toArray(new Cathedra[0]);
   }
+
 }

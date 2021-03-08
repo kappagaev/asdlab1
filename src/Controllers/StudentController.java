@@ -2,8 +2,6 @@ package Controllers;
 
 import app.App;
 
-import java.util.LinkedList;
-
 public class StudentController extends Controller {
 
   public StudentController(App app) {
