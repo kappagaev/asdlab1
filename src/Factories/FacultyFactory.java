@@ -8,6 +8,8 @@ public class FacultyFactory
     public static Faculty create()
     {
         String name = DataInput.getString("Faculty name");
-        return new Faculty(name);
+        Faculty faculty = new Faculty();
+        faculty.name = name;
+        return faculty;
     }
 }

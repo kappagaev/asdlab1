@@ -8,17 +8,31 @@ import java.util.LinkedList;
 
 public class CathedraRepository extends Repository {
 
-  LinkedList<Cathedra> cathedras = new LinkedList<>();
+  LinkedList<Cathedra> cathedrals = new LinkedList<>();
 
-  @Override
-  public void store(Model model) {
-    this.cathedras.add((Cathedra) model);
+
+  public int getIndex(Cathedra model)
+  {
+    return this.cathedrals.indexOf(model);
   }
 
-  @Override
-  public Model get(String name)
+//    public boolean delete(Faculty model)
+//    {
+//        return faculties.remove(model);
+//    }
+
+  public void update(int index, Cathedra model)
   {
-    for (var cathedra : cathedras) {
+    this.cathedrals.set(index, model);
+  }
+  public void store(Cathedra model) {
+    this.cathedrals.add(model);
+  }
+
+
+  public Cathedra get(String name)
+  {
+    for (var cathedra : cathedrals) {
       if (cathedra.name.equals(name)) {
         return cathedra;
       }
@@ -26,14 +40,12 @@ public class CathedraRepository extends Repository {
     return null;
   }
 
-  @Override
-  public boolean delete(Model model) {
-    return cathedras.remove(model);
+  public boolean delete(Cathedra model) {
+    return cathedrals.remove(model);
   }
 
-  @Override
-  public Model[] all() {
-    return this.cathedras.toArray(new Cathedra[0]);
+  public Cathedra[] all() {
+    return this.cathedrals.toArray(new Cathedra[0]);
   }
 
 }

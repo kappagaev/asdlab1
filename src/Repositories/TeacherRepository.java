@@ -10,12 +10,10 @@ public class TeacherRepository extends Repository {
 
   LinkedList<Teacher> teachers = new LinkedList<>();
 
-  @Override
   public void store(Model model) {
     this.teachers.add((Teacher) model);
   }
 
-  @Override
   public Model get(String name) {
     for (Teacher teacher: teachers) {
       if (teacher.name.equals(name)) {
@@ -25,12 +23,10 @@ public class TeacherRepository extends Repository {
     return null;
   }
 
-  @Override
   public boolean delete(Model model) {
     return teachers.remove(model);
   }
 
-  @Override
   public Model[] all() {
     return this.teachers.toArray(new Teacher[0]);
   }

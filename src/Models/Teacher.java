@@ -4,9 +4,11 @@ import java.util.LinkedList;
 
 public class Teacher extends Model {
 
-  Cathedra cathedra;
+  public Cathedra cathedra;
 
-  public Teacher(String name) {
-    super(name);
-  }
+  public String name;
+
+  public int course;
+
+  public int group;
 }

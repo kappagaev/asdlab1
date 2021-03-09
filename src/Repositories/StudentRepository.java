@@ -5,31 +5,47 @@ import Models.*;
 import java.util.LinkedList;
 
 public class StudentRepository extends Repository {
-
   LinkedList<Student> students = new LinkedList<>();
 
-  @Override
-  public void store(Model model) {
-    this.students.add((Student) model);
+//    public void store(Faculty model)
+//    {
+//        this.faculties.add(model);
+//    }
+
+  public int getIndex(Student student)
+  {
+    return this.students.indexOf(student);
   }
 
-  @Override
-  public Model get(String name) {
-    for (Student student : students) {
-      if (student.name.equals(name)) {
-        return student;
+  public void store(Student student) {
+    this.students.add(student);
+  }
+
+  public Student get(String name) {
+    for (Student faculty: students) {
+      if (faculty.name.equals(name)) {
+        return faculty;
       }
     }
     return null;
   }
 
-  @Override
-  public boolean delete(Model model) {
-    return students.remove(model);
+  public boolean delete(Student student) {
+    return students.remove(student);
   }
 
-  @Override
-  public Model[] all() {
+//    public boolean delete(Faculty model)
+//    {
+//        return faculties.remove(model);
+//    }
+
+  public void update(int index, Student student)
+  {
+    this.students.set(index, student);
+  }
+
+  public Student[] all()
+  {
     return this.students.toArray(new Student[0]);
   }
 }

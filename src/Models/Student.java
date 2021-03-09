@@ -1,13 +1,25 @@
 package Models;
 
-import java.util.LinkedList;
-
 public class Student extends Model{
 
-  Cathedra cathedra;
-  int year;
+  public Cathedra cathedra;
 
-  public Student(String name) {
-    super(name);
+  public String name;
+
+  public int course;
+
+  public int group;
+
+  public int role = 1;
+
+  public final int TEACHER = 2;
+  public final int STUDENT = 1;
+
+  @Override
+  public String toString()
+  {
+    String str = "";
+    str += role==STUDENT?"Студент":"Викладач";
+    return str + " " + name + " курс " + course;
   }
 }

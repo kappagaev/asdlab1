@@ -14,12 +14,15 @@ public class FacultyRepository extends Repository
 //        this.faculties.add(model);
 //    }
 
-    @Override
-    public void store(Model model) {
-        this.faculties.add((Faculty) model);
+    public int getIndex(Faculty faculty)
+    {
+        return this.faculties.indexOf(faculty);
     }
 
-    @Override
+    public void store(Faculty model) {
+        this.faculties.add(model);
+    }
+
     public Faculty get(String name) {
         for (Faculty faculty: faculties) {
             if (faculty.name.equals(name)) {
@@ -29,8 +32,7 @@ public class FacultyRepository extends Repository
         return null;
     }
 
-    @Override
-    public boolean delete(Model model) {
+    public boolean delete(Faculty model) {
         return faculties.remove(model);
     }
 
@@ -39,7 +41,11 @@ public class FacultyRepository extends Repository
 //        return faculties.remove(model);
 //    }
 
-    @Override
+    public void update(int index, Faculty faculty)
+    {
+        this.faculties.set(index, faculty);
+    }
+
     public Faculty[] all()
     {
         return this.faculties.toArray(new Faculty[0]);

@@ -13,4 +13,14 @@ public class App
     {
         router = new Router(this);
     }
+
+    private static App instance = null;
+
+    public static App getInstance()
+    {
+        if (instance == null) {
+            instance = new App();
+        }
+        return instance;
+    }
 }

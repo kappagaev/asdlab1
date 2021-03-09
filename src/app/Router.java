@@ -20,6 +20,9 @@ public class Router
             case "student" -> {
                 return new StudentController(this.app);
             }
+            case "cathedra" -> {
+                return new CathedraController(this.app);
+            }
         }
         return null;
     }

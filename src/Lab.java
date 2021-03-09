@@ -6,7 +6,7 @@ import java.io.IOException;
 public class Lab
 {
     public static void main(String[] args) {
-        App app = new App();
+        App app = App.getInstance();
         while (true) {
             String route = DataInput.getString("Route");
             Controller controller = app.router.route(route);

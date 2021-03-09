@@ -5,6 +5,8 @@ import Models.*;
 import app.*;
 import app.DataInput;
 
+import java.util.Arrays;
+
 public class FacultyController extends Controller
 {
 
@@ -18,7 +20,7 @@ public class FacultyController extends Controller
     }
 
     public void index() {
-        System.out.println(this.app.repositories.facultyRepository.all());
+        System.out.println(Arrays.toString(this.app.repositories.facultyRepository.all()));
     }
 
     @Override
@@ -28,12 +30,13 @@ public class FacultyController extends Controller
         System.out.println("Факультет успішно створений!");
     }
 
-    // Поки не так працює, але суть показує
     @Override
     public void update() {
         Faculty faculty = getModelByName();
+        int facultyIndex = app.repositories.facultyRepository.getIndex(faculty);
         String newFacultyName = DataInput.getString("Faculty name update, n for skip");
         faculty.name = newFacultyName.equals("n") ? newFacultyName : faculty.name;
+        app.repositories.facultyRepository.update(facultyIndex, faculty);
         System.out.println("Faculty updated!");
     }
 
