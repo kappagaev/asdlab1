@@ -2,8 +2,7 @@ package app;
 
 import Controllers.*;
 
-public class Router
-{
+public class Router {
     private final App app;
 
     public Router(App app)

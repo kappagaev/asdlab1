@@ -4,8 +4,7 @@ import Repositories.*;
 
 import java.util.LinkedList;
 
-public class App
-{
+public class App {
     public RepositoryCollection repositories = new RepositoryCollection();
 
     public Router router;

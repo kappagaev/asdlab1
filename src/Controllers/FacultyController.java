@@ -25,7 +25,7 @@ public class FacultyController extends Controller
     public void index() {
         Faculty faculty = getModelByName();
         int role = 0;
-        while (role != 1 || role !=2) {
+        while (role != 1 && role != 2) {
             System.out.println("Вивести студентів (1) чи викладачів (2)?> ");
             role = DataInput.getInt();
         }
