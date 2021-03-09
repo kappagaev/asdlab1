@@ -38,4 +38,34 @@ public class StudentRepository extends Repository {
   {
     return this.students.toArray(new Student[0]);
   }
+
+  public void byName(String name, int role){
+    for (Student student : students) {
+      if(student.name.equals(name)) {
+        if(student.role == role) {
+          System.out.println(student);
+        }
+      }
+    }
+  }
+
+  public void byGroup(int group, int role){
+    for (Student student: students) {
+      if(student.group == group) {
+        if(student.role == role) {
+          System.out.println(student);
+        }
+      }
+    }
+  }
+
+  public void byCourse(int course, int role){
+    for (Student student: students) {
+      if(student.course == course) {
+        if(student.role == role) {
+          System.out.println(student);
+        }
+      }
+    }
+  }
 }

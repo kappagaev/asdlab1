@@ -10,6 +10,8 @@ import app.DataInput;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedList;
 
 public class StudentController extends Controller
 {
@@ -58,8 +60,29 @@ public class StudentController extends Controller
 
   @Override
   public void index() {
-    var students = this.app.repositories.studentRepository.all();
-    Arrays.sort(students);
-    System.out.println(Arrays.toString(students));
+    int role;
+    do {
+      role = DataInput.getInt("Student/Teacher, 1 for Student, 2 for Teacher");
+    } while(role != 1 && role != 2);
+    System.out.println("Виберіть дію: \n" +
+            "Шукати за ПІБ (1)\n" +
+            "Шукати за групою (2)\n" +
+            "Шукати за курсом (3)\n" +
+            "> ");
+    int choice = DataInput.getInt();
+    switch (choice) {
+      case 1:
+        String name = DataInput.getString("ПІБ");
+        app.repositories.studentRepository.byName(name, role);
+        break;
+      case 2:
+        int group = DataInput.getInt("Група");
+        app.repositories.studentRepository.byGroup(group, role);
+        break;
+      case 3:
+        int course = DataInput.getInt("Курс");
+        app.repositories.studentRepository.byCourse(course, role);
+        break;
+    }
   }
 }
