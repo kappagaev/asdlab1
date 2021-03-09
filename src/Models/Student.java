@@ -4,7 +4,15 @@ public class Student extends Model implements Comparable<Student> {
 
   public Cathedra cathedra;
 
+  public String getName() {
+    return name;
+  }
+
   public String name;
+
+  public int getCourse() {
+    return course;
+  }
 
   public int course;
 

@@ -6,6 +6,9 @@ import app.*;
 import app.DataInput;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedList;
 
 public class FacultyController extends Controller
 {
@@ -20,7 +23,22 @@ public class FacultyController extends Controller
     }
 
     public void index() {
-        System.out.println(Arrays.toString(this.app.repositories.facultyRepository.all()));
+        Faculty faculty = getModelByName();
+        int role = 0;
+        while (role != 1 || role !=2) {
+            System.out.println("Вивести студентів (1) чи викладачів (2)?> ");
+            role = DataInput.getInt();
+        }
+        var students = new LinkedList<Student>();
+        for (Cathedra cathedra : faculty.cathedras) {
+            for (Student student : cathedra.students) {
+                if (student.role == role) {
+                    students.add(student);
+                }
+            }
+        }
+        students.sort(Comparator.comparing(Student::getName));
+        System.out.println(Arrays.toString(students.toArray()));
     }
 
     @Override

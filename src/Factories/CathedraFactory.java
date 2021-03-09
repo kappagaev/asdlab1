@@ -23,7 +23,7 @@ public class CathedraFactory
             faculty = app.repositories.facultyRepository.get(facultyName);
         } while (faculty == null);
         int facultyIndex = app.repositories.facultyRepository.getIndex(faculty);
-        faculty.cathedrals.add(cathedra);
+        faculty.cathedras.add(cathedra);
         app.repositories.facultyRepository.update(facultyIndex, faculty);
 
         return cathedra;
