@@ -1,6 +1,6 @@
 package Models;
 
-public class Student extends Model{
+public class Student extends Model implements Comparable<Student> {
 
   public Cathedra cathedra;
 
@@ -18,8 +18,16 @@ public class Student extends Model{
   @Override
   public String toString()
   {
-    String str = "";
-    str += role==STUDENT?"Студент":"Викладач";
+    String str = role==STUDENT?"Студент":"Викладач";
     return str + " " + name + " курс " + course;
+  }
+
+  @Override
+  public int compareTo(Student o) {
+    if(this.course > o.course)
+      return 1;
+    else if (this.course == o.course)
+      return 0 ;
+    return -1 ;
   }
 }

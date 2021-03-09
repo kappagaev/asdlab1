@@ -34,7 +34,7 @@ public class FacultyController extends Controller
     public void update() {
         Faculty faculty = getModelByName();
         int facultyIndex = app.repositories.facultyRepository.getIndex(faculty);
-        String newFacultyName = DataInput.getString("Faculty name update, n for skip");
+        String newFacultyName = DataInput.getString("Faculty name update, n for skip> ");
         faculty.name = newFacultyName.equals("n") ? newFacultyName : faculty.name;
         app.repositories.facultyRepository.update(facultyIndex, faculty);
         System.out.println("Faculty updated!");
@@ -44,7 +44,7 @@ public class FacultyController extends Controller
     {
         Faculty faculty;
         do {
-            String facultyName = DataInput.getString("Faculty name");
+            String facultyName = DataInput.getString("Faculty name> ");
             faculty = this.app.repositories.facultyRepository.get(facultyName);
         } while (faculty == null);
         return faculty;

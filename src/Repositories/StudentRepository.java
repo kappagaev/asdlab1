@@ -7,11 +7,6 @@ import java.util.LinkedList;
 public class StudentRepository extends Repository {
   LinkedList<Student> students = new LinkedList<>();
 
-//    public void store(Faculty model)
-//    {
-//        this.faculties.add(model);
-//    }
-
   public int getIndex(Student student)
   {
     return this.students.indexOf(student);
@@ -33,11 +28,6 @@ public class StudentRepository extends Repository {
   public boolean delete(Student student) {
     return students.remove(student);
   }
-
-//    public boolean delete(Faculty model)
-//    {
-//        return faculties.remove(model);
-//    }
 
   public void update(int index, Student student)
   {

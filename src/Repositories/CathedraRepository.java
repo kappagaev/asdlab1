@@ -16,19 +16,14 @@ public class CathedraRepository extends Repository {
     return this.cathedrals.indexOf(model);
   }
 
-//    public boolean delete(Faculty model)
-//    {
-//        return faculties.remove(model);
-//    }
-
   public void update(int index, Cathedra model)
   {
     this.cathedrals.set(index, model);
   }
+
   public void store(Cathedra model) {
     this.cathedrals.add(model);
   }
-
 
   public Cathedra get(String name)
   {

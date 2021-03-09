@@ -29,7 +29,7 @@ public class CathedraController extends Controller
     public void update() {
         Cathedra cathedra = getModelByName();
         int facultyIndex = app.repositories.cathedraRepository.getIndex(cathedra);
-        String newFacultyName = DataInput.getString("Cathedra name update, n for skip");
+        String newFacultyName = DataInput.getString("Cathedra name update, n for skip> ");
         cathedra.name = newFacultyName.equals("n") ? newFacultyName : cathedra.name;
         app.repositories.cathedraRepository.update(facultyIndex, cathedra);
         System.out.println("Cathedra updated!");
@@ -38,7 +38,7 @@ public class CathedraController extends Controller
     {
         Cathedra cathedra;
         do {
-            String cathedraName = DataInput.getString("Cathedra name");
+            String cathedraName = DataInput.getString("Cathedra name> ");
             cathedra = this.app.repositories.cathedraRepository.get(cathedraName);
         } while (cathedra == null);
         return cathedra;

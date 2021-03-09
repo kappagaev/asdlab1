@@ -9,6 +9,7 @@ import app.App;
 import app.DataInput;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class StudentController extends Controller
 {
@@ -41,7 +42,7 @@ public class StudentController extends Controller
   {
     Student student;
     do {
-      String studentName = DataInput.getString("Student/Teacher name");
+      String studentName = DataInput.getString("Student/Teacher name> ");
       student = this.app.repositories.studentRepository.get(studentName);
     } while (student == null);
     return student;
@@ -57,6 +58,8 @@ public class StudentController extends Controller
 
   @Override
   public void index() {
-    System.out.println(Arrays.toString(this.app.repositories.studentRepository.all()));
+    var students = this.app.repositories.studentRepository.all();
+    Arrays.sort(students);
+    System.out.println(Arrays.toString(students));
   }
 }
