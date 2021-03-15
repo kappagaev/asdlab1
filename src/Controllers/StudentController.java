@@ -38,7 +38,7 @@ public class StudentController extends Controller
       return;
     }
     int facultyIndex = app.repositories.studentRepository.getIndex(student);
-    String newFacultyName = DataInput.getString("Cathedra name update, n for skip");
+    String newFacultyName = DataInput.getString("Cathedra name update, n for skip> ");
     student.name = newFacultyName.equals("n") ? newFacultyName : student.name;
     app.repositories.studentRepository.update(facultyIndex, student);
     System.out.println("Cathedra updated!");
@@ -71,27 +71,28 @@ public class StudentController extends Controller
   public void index() {
     int role;
     do {
-      role = DataInput.getInt("Student/Teacher, 1 for Student, 2 for Teacher");
+      role = DataInput.getInt("Student/Teacher, 1 for Student, 2 for Teacher> ");
     } while(role != 1 && role != 2);
-    System.out.println("Виберіть дію: \n" +
-            "Шукати за ПІБ (1)\n" +
-            "Шукати за групою (2)\n" +
-            "Шукати за курсом (3)\n" +
-            "> ");
+    System.out.print("""
+        Виберіть дію:\s
+        Шукати за ПІБ (1)
+        Шукати за групою (2)
+        Шукати за курсом (3)
+        >\s""");
     int choice = DataInput.getInt();
     switch (choice) {
-      case 1:
-        String name = DataInput.getString("ПІБ");
+      case 1 -> {
+        String name = DataInput.getString("ПІБ> ");
         app.repositories.studentRepository.byName(name, role);
-        break;
-      case 2:
-        int group = DataInput.getInt("Група");
+      }
+      case 2 -> {
+        int group = DataInput.getInt("Група> ");
         app.repositories.studentRepository.byGroup(group, role);
-        break;
-      case 3:
-        int course = DataInput.getInt("Курс");
+      }
+      case 3 -> {
+        int course = DataInput.getInt("Курс> ");
         app.repositories.studentRepository.byCourse(course, role);
-        break;
+      }
     }
   }
 }

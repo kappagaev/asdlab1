@@ -41,7 +41,7 @@ public class StudentFactory
         System.out.println(Arrays.toString(app.repositories.cathedraRepository.all()));
         Cathedra cathedra;
         do {
-            String cathedraName = DataInput.getString(rolePrefix+"'s Cathedra name");
+            String cathedraName = DataInput.getString(rolePrefix+"'s Cathedra name> ");
             cathedra = app.repositories.cathedraRepository.get(cathedraName);
         } while (cathedra == null);
         int facultyIndex = app.repositories.cathedraRepository.getIndex(cathedra);
