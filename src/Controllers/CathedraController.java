@@ -19,11 +19,6 @@ public class CathedraController extends Controller
     }
 
     @Override
-    public void view() {
-
-    }
-
-    @Override
     public void create() {
         Cathedra cathedra = CathedraFactory.create();
         if (cathedra == null) {

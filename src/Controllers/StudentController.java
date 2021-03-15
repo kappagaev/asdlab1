@@ -20,11 +20,6 @@ public class StudentController extends Controller
   }
 
   @Override
-  public void view() {
-
-  }
-
-  @Override
   public void create() {
     Student student = StudentFactory.create();
     if (student == null) {

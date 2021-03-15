@@ -13,7 +13,6 @@ abstract public class Controller
     public void callMethod(String method)
     {
         switch (method) {
-            case "view" -> this.view();
             case "create" -> this.create();
             case "update" -> this.update();
             case "delete" -> this.delete();
@@ -22,7 +21,6 @@ abstract public class Controller
         }
     }
 
-    public abstract void view();
     public abstract void create();
     public abstract void update();
     public abstract void delete();

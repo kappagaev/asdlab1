@@ -17,11 +17,6 @@ public class FacultyController extends Controller
         super(app);
     }
 
-    @Override
-    public void view() {
-
-    }
-
     public void index() {
         Faculty faculty = getModelByName();
         if (faculty == null) {
