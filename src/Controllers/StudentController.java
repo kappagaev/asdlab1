@@ -26,14 +26,22 @@ public class StudentController extends Controller
 
   @Override
   public void create() {
-    Student cathedra = StudentFactory.create();
-    app.repositories.studentRepository.store(cathedra);
-    System.out.println("Кафедра успішно створена!");
+    Student student = StudentFactory.create();
+    if (student == null) {
+      System.out.println("Відбулась помилка при створенні студента.");
+    } else {
+      app.repositories.studentRepository.store(student);
+      System.out.println("Студента успішно створено!");
+    }
   }
 
   @Override
   public void update() {
     Student student = getModelByName();
+    if (student == null) {
+      System.out.println("Студента не визначено!");
+      return;
+    }
     int facultyIndex = app.repositories.studentRepository.getIndex(student);
     String newFacultyName = DataInput.getString("Cathedra name update, n for skip");
     student.name = newFacultyName.equals("n") ? newFacultyName : student.name;
@@ -43,16 +51,22 @@ public class StudentController extends Controller
   private Student getModelByName()
   {
     Student student;
+    int counter = 0;
     do {
       String studentName = DataInput.getString("Student/Teacher name> ");
       student = this.app.repositories.studentRepository.get(studentName);
-    } while (student == null);
+      counter++;
+    } while (student == null && counter < 5);
     return student;
   }
   @Override
   public void delete()
   {
     Student student = getModelByName();
+    if (student == null) {
+      System.out.println("Студента не визначено!");
+      return;
+    }
     if (this.app.repositories.studentRepository.delete(student)) {
       System.out.println("Студент/Вчитель успішно видалена!");
     }

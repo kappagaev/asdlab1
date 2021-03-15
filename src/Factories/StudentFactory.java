@@ -15,26 +15,29 @@ public class StudentFactory
     {
         int role;
         do {
-            role = DataInput.getInt("Student/Teacher, 1 for Student, 2 for Teacher");
+            role = DataInput.getInt("Student/Teacher, 1 for Student, 2 for Teacher> ");
         } while(role != 1 && role != 2);
         String rolePrefix = role == 1?"Student":"Teacher";
-        String name = DataInput.getString(rolePrefix+" name");
+        String name = DataInput.getString(rolePrefix+"'s name> ");
         Student student  = new Student();
         student.name = name;
         int course;
         do {
-            course = DataInput.getInt(rolePrefix+"'s course");
+            course = DataInput.getInt(rolePrefix+"'s course> ");
 
         } while(course<0 || course > 7);
         student.course = course;
 
         int group;
         do {
-            group = DataInput.getInt(rolePrefix+"'s group");
+            group = DataInput.getInt(rolePrefix+"'s group> ");
 
-        } while(group< 0);
+        } while(group < 0);
         student.group = group;
-
+        if (app.repositories.cathedraRepository.isEmpty()) {
+            System.out.println("Список факультетів пустий!");
+            return null;
+        }
         System.out.println(Arrays.toString(app.repositories.cathedraRepository.all()));
         Cathedra cathedra;
         do {

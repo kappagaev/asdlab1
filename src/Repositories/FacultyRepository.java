@@ -50,4 +50,8 @@ public class FacultyRepository extends Repository
     {
         return this.faculties.toArray(new Faculty[0]);
     }
+
+    public boolean isEmpty() {
+        return faculties.size() == 0;
+    }
 }

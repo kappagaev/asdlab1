@@ -26,13 +26,22 @@ public class CathedraController extends Controller
     @Override
     public void create() {
         Cathedra cathedra = CathedraFactory.create();
-        app.repositories.cathedraRepository.store(cathedra);
-        System.out.println("Кафедра успішно створена!");
+        if (cathedra == null) {
+            System.out.println("Відбулась помилка при створенні кафедри.");
+        }
+        else {
+            app.repositories.cathedraRepository.store(cathedra);
+            System.out.println("Кафедра успішно створена!");
+        }
     }
 
     @Override
     public void update() {
         Cathedra cathedra = getModelByName();
+        if (cathedra == null) {
+            System.out.println("Кафедра не визначена!");
+            return;
+        }
         int facultyIndex = app.repositories.cathedraRepository.getIndex(cathedra);
         String newFacultyName = DataInput.getString("Cathedra name update, n for skip> ");
         cathedra.name = newFacultyName.equals("n") ? newFacultyName : cathedra.name;
@@ -42,16 +51,22 @@ public class CathedraController extends Controller
     private Cathedra getModelByName()
     {
         Cathedra cathedra;
+        int counter = 0;
         do {
             String cathedraName = DataInput.getString("Cathedra name> ");
             cathedra = this.app.repositories.cathedraRepository.get(cathedraName);
-        } while (cathedra == null);
+            counter++;
+        } while (cathedra == null && counter < 5);
         return cathedra;
     }
     @Override
     public void delete()
     {
         Cathedra cathedra = getModelByName();
+        if (cathedra == null) {
+            System.out.println("Кафедра не визначена!");
+            return;
+        }
         if (this.app.repositories.cathedraRepository.delete(cathedra)) {
             System.out.println("Кафедра успішно видалена!");
         }
@@ -60,14 +75,19 @@ public class CathedraController extends Controller
     @Override
     public void index() {
         Cathedra cathedra = getModelByName();
+        if (cathedra == null) {
+            System.out.println("Кафедра не визначена!");
+            return;
+        }
         int facultyIndex = app.repositories.cathedraRepository.getIndex(cathedra);
-        System.out.println("Виберіть дію: \n" +
-            "Вивести всіх студентів кафедри впорядкованих за курсами (1)\n" +
-            "Вивести всіх студентів кафедри впорядкованих за алфавітом (2)\n" +
-            "Вивести всіх викладачів кафедри впорядкованих за алфавітом (3)\n" +
-            "Вивести всіх студентів кафедри вказаного курсу (4)\n" +
-            "Вивести всіх студентів кафедри вказаного курсу впорядкованих за алфавітом (5)" +
-            "> ");
+        System.out.print("""
+            Виберіть дію:\s
+            Вивести всіх студентів кафедри впорядкованих за курсами (1)
+            Вивести всіх студентів кафедри впорядкованих за алфавітом (2)
+            Вивести всіх викладачів кафедри впорядкованих за алфавітом (3)
+            Вивести всіх студентів кафедри вказаного курсу (4)
+            Вивести всіх студентів кафедри вказаного курсу впорядкованих за алфавітом (5)
+            >\s""");
         int choice = DataInput.getInt();
         switch (choice) {
             case 5:

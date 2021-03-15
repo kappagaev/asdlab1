@@ -24,6 +24,10 @@ public class FacultyController extends Controller
 
     public void index() {
         Faculty faculty = getModelByName();
+        if (faculty == null) {
+            System.out.println("Факультет не визначено!");
+            return;
+        }
         int role = 0;
         while (role != 1 && role != 2) {
             System.out.println("Вивести студентів (1) чи викладачів (2)?> ");
@@ -51,6 +55,10 @@ public class FacultyController extends Controller
     @Override
     public void update() {
         Faculty faculty = getModelByName();
+        if (faculty == null) {
+            System.out.println("Факультет не визначено!");
+            return;
+        }
         int facultyIndex = app.repositories.facultyRepository.getIndex(faculty);
         String newFacultyName = DataInput.getString("Faculty name update, n for skip> ");
         faculty.name = newFacultyName.equals("n") ? newFacultyName : faculty.name;
@@ -61,10 +69,12 @@ public class FacultyController extends Controller
     private Faculty getModelByName()
     {
         Faculty faculty;
+        int counter = 0;
         do {
             String facultyName = DataInput.getString("Faculty name> ");
             faculty = this.app.repositories.facultyRepository.get(facultyName);
-        } while (faculty == null);
+            counter++;
+        } while (faculty == null && counter < 5);
         return faculty;
     }
 
@@ -72,6 +82,10 @@ public class FacultyController extends Controller
     public void delete()
     {
         Faculty faculty = getModelByName();
+        if (faculty == null) {
+            System.out.println("Факультет не визначено!");
+            return;
+        }
         if (this.app.repositories.facultyRepository.delete(faculty)) {
             System.out.println("Факультет успішно видалено!");
         }

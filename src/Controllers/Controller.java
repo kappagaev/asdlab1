@@ -17,7 +17,8 @@ abstract public class Controller
             case "create" -> this.create();
             case "update" -> this.update();
             case "delete" -> this.delete();
-            case "index" -> this.index();
+            case "list" -> this.index();
+            default -> this.showHelp();
         }
     }
 
@@ -26,4 +27,8 @@ abstract public class Controller
     public abstract void update();
     public abstract void delete();
     public abstract void index();
+
+    public void showHelp() {
+        System.out.println("Available commands: create, update, delete, list");
+    }
 }
