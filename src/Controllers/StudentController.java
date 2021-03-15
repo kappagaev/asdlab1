@@ -26,32 +26,60 @@ public class StudentController extends Controller
       System.out.println("Відбулась помилка при створенні студента.");
     } else {
       app.repositories.studentRepository.store(student);
-      System.out.println("Студента успішно створено!");
+      String rolePrefix  = student.role == 1?"Студент":"Викладач";
+      System.out.println(rolePrefix + " успішно створено!");
     }
   }
 
   @Override
   public void update() {
     Student student = getModelByName();
+    System.out.println(student);
     if (student == null) {
-      System.out.println("Студента не визначено!");
+      System.out.println("Студента/Викладач не визначено!");
       return;
     }
-    int facultyIndex = app.repositories.studentRepository.getIndex(student);
-    String newFacultyName = DataInput.getString("Cathedra name update, n for skip> ");
-    student.name = newFacultyName.equals("n") ? newFacultyName : student.name;
-    app.repositories.studentRepository.update(facultyIndex, student);
-    System.out.println("Cathedra updated!");
+    int studentIndex = app.repositories.studentRepository.getIndex(student);
+    int role;
+    do {
+      role = DataInput.getInt("Student/Teacher, 1 for Student, 2 for Teacher, 3 for skip> ");
+    } while(role != 1 && role != 2 && role != 3);
+    String rolePrefix;
+    if (role == 3) {
+      rolePrefix  = student.role == 1?"Student":"Teacher";
+    } else {
+      rolePrefix = role == 1?"Student":"Teacher";
+    }
+    String name = DataInput.getString(rolePrefix+"'s name, n for skip> ");
+    student.name = name.equals("n") ? student.name: name;
+    int course;
+    do {
+      course = DataInput.getInt(rolePrefix+"'s course, 0 for skip> ");
+
+    } while(course<0 || course > 7);
+    student.course = course == 0? student.course: course;
+    student.role = role == 3? student.role: role;
+    int group;
+    do {
+      group = DataInput.getInt(rolePrefix+"'s group, 0 for skip> ");
+
+    } while(group < 0);
+    student.group = group == 0?student.group:group;
+    app.repositories.studentRepository.update(studentIndex, student);
+    System.out.println(rolePrefix + " updated!");
   }
   private Student getModelByName()
   {
-    Student student;
+    System.out.println(Arrays.toString(app.repositories.studentRepository.all()));
+    Student student = null;
     int counter = 0;
-    do {
-      String studentName = DataInput.getString("Student/Teacher name> ");
-      student = this.app.repositories.studentRepository.get(studentName);
-      counter++;
-    } while (student == null && counter < 5);
+    if(app.repositories.studentRepository.all().length > 0) {
+      do {
+        String studentName = DataInput.getString("Student/Teacher name> ");
+        student = this.app.repositories.studentRepository.get(studentName);
+        counter++;
+      } while (student == null && counter < 5);
+    }
     return student;
   }
   @Override

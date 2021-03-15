@@ -32,6 +32,7 @@ public class CathedraController extends Controller
 
     @Override
     public void update() {
+        System.out.println(Arrays.toString(app.repositories.cathedraRepository.all()));
         Cathedra cathedra = getModelByName();
         if (cathedra == null) {
             System.out.println("Кафедра не визначена!");
@@ -45,18 +46,21 @@ public class CathedraController extends Controller
     }
     private Cathedra getModelByName()
     {
-        Cathedra cathedra;
+        Cathedra cathedra = null;
         int counter = 0;
-        do {
-            String cathedraName = DataInput.getString("Cathedra name> ");
-            cathedra = this.app.repositories.cathedraRepository.get(cathedraName);
-            counter++;
-        } while (cathedra == null && counter < 5);
+        if(app.repositories.cathedraRepository.all().length > 0) {
+            do {
+                String cathedraName = DataInput.getString("Cathedra name> ");
+                cathedra = this.app.repositories.cathedraRepository.get(cathedraName);
+                counter++;
+            } while (cathedra == null && counter < 5);
+        }
         return cathedra;
     }
     @Override
     public void delete()
     {
+        System.out.println(Arrays.toString(app.repositories.cathedraRepository.all()));
         Cathedra cathedra = getModelByName();
         if (cathedra == null) {
             System.out.println("Кафедра не визначена!");
@@ -69,6 +73,7 @@ public class CathedraController extends Controller
 
     @Override
     public void index() {
+        System.out.println(Arrays.toString(app.repositories.cathedraRepository.all()));
         Cathedra cathedra = getModelByName();
         if (cathedra == null) {
             System.out.println("Кафедра не визначена!");

@@ -63,13 +63,15 @@ public class FacultyController extends Controller
 
     private Faculty getModelByName()
     {
-        Faculty faculty;
+        Faculty faculty = null;
         int counter = 0;
-        do {
-            String facultyName = DataInput.getString("Faculty name> ");
-            faculty = this.app.repositories.facultyRepository.get(facultyName);
-            counter++;
-        } while (faculty == null && counter < 5);
+        if(app.repositories.facultyRepository.all().length > 0) {
+            do {
+                String facultyName = DataInput.getString("Faculty name> ");
+                faculty = this.app.repositories.facultyRepository.get(facultyName);
+                counter++;
+            } while (faculty == null && counter < 5);
+        }
         return faculty;
     }
 

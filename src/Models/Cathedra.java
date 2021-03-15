@@ -13,6 +13,6 @@ public class Cathedra extends Model{
   @Override
   public String toString()
   {
-    return "Кафедра " + this.name;
+    return "Кафедра " + this.name + " факультету " + faculty.name;
   }
 }

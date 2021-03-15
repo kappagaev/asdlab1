@@ -21,6 +21,7 @@ public class StudentFactory
         String name = DataInput.getString(rolePrefix+"'s name> ");
         Student student  = new Student();
         student.name = name;
+        student.role = role;
         int course;
         do {
             course = DataInput.getInt(rolePrefix+"'s course> ");

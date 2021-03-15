@@ -27,7 +27,7 @@ public class Student extends Model implements Comparable<Student> {
   public String toString()
   {
     String str = role==STUDENT?"Студент":"Викладач";
-    return str + " " + name + " курс " + course;
+    return str + " " + name + " курс " + course + " група " + group + " кафедра " + cathedra.name;
   }
 
   @Override
